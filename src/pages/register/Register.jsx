@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
+import { CustomInput } from "../../common/custom-input/CustomInput";
 
 export default function Register() {
     const [email, setEmail] = useState("");
@@ -41,25 +42,29 @@ export default function Register() {
     };
   
     return (
-      <div className='register-container'>
+      <div className='form-container'>
         <h1>Register</h1>
         <Link to='/'>Home</Link>
-        <input
+        <Link to='/login'>Login</Link>
+        <CustomInput
           type='text'
           name='email'
           placeholder='Email'
+          value={email}
           onChange={inputHandler}
         />
-        <input
+        <CustomInput
           type='password'
           name='password'
           placeholder='Password'
+          value={password}
           onChange={inputHandler}
         />
-        <input
+        <CustomInput
           type='password'
           name='passwordConfirmation'
           placeholder='Confirm Password'
+          value={passwordConfirmation}
           onChange={inputHandler}
         />
         <button onClick={errorCheck}>Register</button>
