@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CustomInput } from "../../common/custom-input/CustomInput";
+import { login } from "../../services/auth.service";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -14,6 +15,10 @@ export default function Login() {
     if (credentials.email === "" || credentials.password === "") {
       setMsg("Email and password are required.");
     } else {
+        login(credentials)
+        .then((response) => {
+          console.log(response.data)
+        })
       setMsg("Login successful.");
     }
   };

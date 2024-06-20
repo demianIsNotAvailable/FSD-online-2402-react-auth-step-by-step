@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import { CustomInput } from "../../common/custom-input/CustomInput";
+import { register } from "../../services/auth.service";
 
 export default function Register() {
     const [email, setEmail] = useState("");
@@ -35,7 +36,10 @@ export default function Register() {
       }
   
       if (errorMessage === "") {
-        setMsg("Registration successful.");
+        register({email, password})
+        .then((response) => {
+          console.log(response.data)
+        })
       } else {
         setMsg(errorMessage);
       }
